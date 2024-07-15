@@ -1,0 +1,33 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR-Code إنشاء</title>
+</head>
+<body>
+    <h1>QR-Code إنشاء</h1>
+
+    {% if created %}
+    <p>QR-Code تم انشاء</p>
+    <img src="{{ url_for('static', filename='qr_code.png') }}" alt="رمز QR">
+    {% else %}
+    <form method="post">
+        <label for="seller_name">اسم البائع:</label>
+        <input type="text" id="seller_name" name="seller_name" required><br><br>
+
+        <label for="tax_number">الرقم الضريبي:</label>
+        <input type="number" id="tax_number" name="tax_number" required><br><br>
+
+        <label for="total_amount">المبلغ الإجمالي:</label>
+        <input type="number" step="0.01" id="total_amount" name="total_amount" required><br><br>
+
+        <label for="tax_amount">مبلغ الضريبة:</label>
+        <input type="number" step="0.01" id="tax_amount" name="tax_amount" required><br><br>
+
+        <button type="submit">QR-Code إنشاء</button>
+    </form>
+    {% endif %}
+</body>
+</html>
